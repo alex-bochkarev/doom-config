@@ -1,0 +1,9 @@
+#+title: Personal Doom Emacs config
+
+Finally, a Doom-based config (migrating from Spacemacs), with the aim of having
+"less framework in my framework".
+
+Selected highlights:
+- robust and efficient email with mu4e
+- navigation with etags
+- projects magic: separate org nodes per project
