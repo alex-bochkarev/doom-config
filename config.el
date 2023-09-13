@@ -21,8 +21,8 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
-;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
+;; (setq doom-font (font-spec :family "Fira" :size 14 :weight 'semi-light))
+(setq doom-font "Iosevka-12")
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -36,11 +36,15 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
+
+(load! "my-utils.el")
+(setq doom-unicode-font (font-spec :family "Fira Code"))
+
 
 ;; setting up org-roam
 (setq org-roam-directory "~/PKB/notes")
@@ -94,9 +98,12 @@
 (setq org-someday-file "~/org/someday.org")
 (setq org-blog-file "~/PKB/notes/blog.org")
 (setq org-daily-summary-file "~/org/summaries.org.gpg")
-(setq org-mobile-file "~/Dropbox/orgzly/mobile-refile.org")
+(setq org-mobile-file "~/shares/mobile/inbox.org")
+(setq org-mobile-directory "~/shares/mobile/")
 
 (setq projectile-tags-command "ctags -Re --tag-relative=yes --exclude=@.ctagsignore -f \"%s\" %s .")
+(setq projectile-project-search-path '(("~/projects/" . 1)))
+
 (map! "H-/" 'projectile-find-tag)
 
 (after! org
@@ -149,7 +156,9 @@
 (global-set-key (kbd "H-a") 'org-agenda)
 ;; clocking in-out fine-tuning
 (global-set-key (kbd "H-i") 'org-clock-in)
-(global-set-key (kbd "H-o") 'org-clock-out)
+(global-set-key (kbd "H-I") 'org-clock-out)
+(global-set-key (kbd "C-H-i") 'org-clock-goto)
+
 
 (load! "my-email.el")
 ;; general keybindings
@@ -160,12 +169,14 @@
 (map! "H-j" 'evil-window-down)
 (map! "H-k" 'evil-window-up)
 
+(map! "C-e" 'end-of-visible-line) ;; this is convenient in latex (insert mode)!
+
 (load! "my-projects-magic.el")
 
 (map! (:prefix-map  ("H-o" . "hyper-open")
        :desc "general orgfile" "g" (lambda () (interactive) (find-file org-current-file))
        :desc "reading list" "r" (lambda () (interactive) (find-file org-readme-file))
-       :desc "distractions" "d" (lambda () (interactive) (find-file org-distractions-file))
+       :desc "distractions" "D" (lambda () (interactive) (find-file org-distractions-file))
        :desc "mobile inbox" "m" (lambda () (interactive) (find-file org-mobile-file))
        :desc "website notes" "w" (lambda () (interactive) (find-file "~/PKB/notes/website.org"))
        :desc "shopping list" "S" (lambda () (interactive) (find-file (concat org-directory "shopping.org")))
@@ -188,6 +199,7 @@
         :desc "projects folder" "p" (lambda () (interactive) (find-file "~/projects/"))
         :desc "project notes" "n" (lambda () (interactive) (find-file pkb-project-notes-root))
         :desc "org folder" "o" (lambda () (interactive) (find-file org-directory)))
+        :desc "mobile folder" "m" (lambda () (interactive) (find-file org-mobile-directory)))
        (:prefix-map ("p" . "project place")
         :desc "PKB dir" "k" (lambda () (interactive) (find-file (ab/get-project-notes-dir)))
         :desc "PKB Org file" "o" (lambda () (interactive) (find-file (concat (ab/get-project-notes-dir) pkb-project-note-file)))
@@ -202,3 +214,5 @@
 
 (map! (:prefix-map  ("H-t" . "hyper-toggle")
        :desc "show @mentions" "m" #'ab-highlight-names))
+
+(load! "my-science.el")

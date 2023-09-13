@@ -6,7 +6,7 @@
 (global-set-key (kbd "H-v") (lambda () (interactive)
                               (if (bound-and-true-p ab/default-file-to-view)
                                   (if (file-exists-p ab/default-file-to-view)
-                                      (spacemacs//open-in-external-app (expand-file-name ab/default-file-to-view))
+                                      (ab--open-in-external-app (expand-file-name ab/default-file-to-view))
                                     (message (concat ab/default-file-to-view ": file does not exist")))
                                 (message "ab/default-file-to-view not defined (bind it in .dir-locals!)"))))
 

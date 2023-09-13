@@ -17,9 +17,9 @@
 
 ;;;; Repo-specific templates
                 ("r" "=== Repo-specific templates === ")
-                ("rt" "New TODO (repo-specific)" entry (file+headline (lambda () (concat (projectile-project-root)  org-projectile-per-project-filepath)) "Current project TODOs")
+                ("rt" "New TODO (repo-specific)" entry (file+headline (lambda () (concat (projectile-project-root)  "TODOs.org")) "Current project TODOs")
                  "* TODO %?\n%U\n%a\n" :prepend t)
-                ("rc" "Changelog entry (repo-specific)" entry(file+headline (lambda () (concat (projectile-project-root) "CHANGELOG.org")) "Running changelog")
+                ("rc" "Changelog entry (repo-specific)" entry (file+headline (lambda () (concat (projectile-project-root) "CHANGELOG.org")) "Running changelog")
                  "* %u: %? \n%a\n" :prepend t)
                 ("rn" "General note / assumptions / etc (repo-specific)" entry (file+headline (lambda () (concat (projectile-project-root)  org-projectile-per-project-filepath)) "Notes")
                  "* %?\n%U\n%a\n" :prepend t)
