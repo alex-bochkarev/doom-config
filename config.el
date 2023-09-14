@@ -43,7 +43,7 @@
 (setq org-directory "~/org/")
 
 (load! "my-utils.el")
-(setq doom-unicode-font (font-spec :family "Fira Code"))
+(setq doom-unicode-font (font-spec :family "FiraCode"))
 
 
 ;; setting up org-roam
@@ -199,7 +199,7 @@
         :desc "projects folder" "p" (lambda () (interactive) (find-file "~/projects/"))
         :desc "project notes" "n" (lambda () (interactive) (find-file pkb-project-notes-root))
         :desc "org folder" "o" (lambda () (interactive) (find-file org-directory)))
-        :desc "mobile folder" "m" (lambda () (interactive) (find-file org-mobile-directory)))
+        :desc "mobile folder" "m" (lambda () (interactive) (find-file org-mobile-directory))
        (:prefix-map ("p" . "project place")
         :desc "PKB dir" "k" (lambda () (interactive) (find-file (ab/get-project-notes-dir)))
         :desc "PKB Org file" "o" (lambda () (interactive) (find-file (concat (ab/get-project-notes-dir) pkb-project-note-file)))

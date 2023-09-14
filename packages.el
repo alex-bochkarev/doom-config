@@ -47,7 +47,7 @@
 ;; ...or multiple packages
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
-;(unpin! t)
-(unpin! evil-collection)
+;;(unpin! t)
+;; (unpin! evil-collection)
 (package! evil-collection
-  :recipe (:repo "emacs-evil/evil-collection" :branch "master"))
+   :recipe (:repo "emacs-evil/evil-collection" :branch "master"))

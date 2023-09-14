@@ -24,6 +24,11 @@
         "~/projects/qmath-course"
         "~/.dotfiles"))
 
+(add-hook 'org-agenda-mode-hook
+          (lambda ()
+            (local-set-key (kbd "H-r") 'org-agenda-schedule)
+            (local-set-key (kbd "H-d") 'org-agenda-deadline)))
+
 ;; project-management related filenames
 (setq pkb-project-note-file "project.org")
 (setq pkb-project-log-file "log.org")
