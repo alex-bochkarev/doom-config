@@ -184,7 +184,7 @@
        :desc "startpage.html" "s" (lambda () (interactive) (find-file "~/projects/startpage/start.html"))
        :desc "ledger" "l" (lambda () (interactive) (find-file "~/finance/ledger.beancount"))
        :desc "email backlog" "e" (lambda () (interactive) (find-file org-email-file))
-       :desc "projects pipeline" "p" (lambda () (interactive) (find-file org-research-file))
+       :desc "projects pipeline" "P" (lambda () (interactive) (find-file org-research-file))
        (:prefix-map ("d" . "dotfiles")
         :desc  "spacemacs" "E" '(lambda () (interactive) (find-file "~/.spacemacs.d/init.el"))
         :desc "doom" "e" '(lambda () (interactive) (find-file "~/.config/doom/config.el"))
@@ -203,7 +203,7 @@
        (:prefix-map ("p" . "project place")
         :desc "PKB dir" "k" (lambda () (interactive) (find-file (ab/get-project-notes-dir)))
         :desc "PKB Org file" "o" (lambda () (interactive) (find-file (concat (ab/get-project-notes-dir) pkb-project-note-file)))
-        :desc "TODOs" "t" (lambda () (interactive) (find-file (concat (ab/get-project-notes-dir) "TODOs.org")))
+        :desc "TODOs" "t" (lambda () (interactive) (find-file (concat (projectile-project-root) "TODOs.org")))
         :desc "Changelog" "c" (lambda () (interactive) (find-file (concat (projectile-project-root) "CHANGELOG.org")))
         :desc "README.md" "R" (lambda () (interactive) (find-file (concat (projectile-project-root) "README.md")))
         :desc "README.org" "r" (lambda () (interactive) (find-file (concat (projectile-project-root) "README.org")))
@@ -216,3 +216,9 @@
        :desc "show @mentions" "m" #'ab-highlight-names))
 
 (load! "my-science.el")
+
+(use-package! ox-extra
+              :after org
+              :config
+              (ox-extras-activate '(ignore-headlines)))
+

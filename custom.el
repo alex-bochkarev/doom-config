@@ -5,8 +5,11 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    '("8d3ef5ff6273f2a552152c7febc40eabca26bae05bd12bc85062e2dc224cde9a" "467dc6fdebcf92f4d3e2a2016145ba15841987c71fbe675dcfe34ac47ffb9195" default))
+ '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(safe-local-variable-values
-   '((ab/default-file-to-view . "./PDFs/paper.pdf")
+   '((ab/default-file-to-view . "./export/2023-09-18_AB_alamdari2018.pdf")
+     (ab/default-file-to-view . "./Bochkarev_CV.pdf")
+     (ab/default-file-to-view . "./PDFs/paper.pdf")
      (python-shell-interpreter-args . "-i --simple-prompt")
      (python-shell-interpreter . "~/projects/qopt-overview/.venv/bin/ipython")
      (eval add-hook 'after-save-hook 'org-html-export-to-html t t)

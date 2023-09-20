@@ -23,8 +23,10 @@
                  "* %u: %? \n%a\n" :prepend t)
                 ("rn" "General note / assumptions / etc (repo-specific)" entry (file+headline (lambda () (concat (projectile-project-root)  org-projectile-per-project-filepath)) "Notes")
                  "* %?\n%U\n%a\n" :prepend t)
-                ("rf" "Further note / TODOs" entry (file+headline (lambda () (concat (projectile-project-root)  org-projectile-per-project-filepath)) "Further")
-                 "* %?\n%U\n%a\n" :prepend t)
+                ("rf" "Further note / TODOs" entry (file+headline (lambda () (concat (projectile-project-root)  "TODOs.org")) "Further work")
+                 "* %?\n%U\n%a\n")
+                ("rN" "Notation note / TODOs" entry (file+headline (lambda () (concat (projectile-project-root)  "TODOs.org")) "Notation")
+                 "* %?\n%U\n%a\n")
 
 ;;;; (PKB) Project-specific templates
                 ("p" "=== Project-specific templates (PKB/notes) === ")
@@ -38,7 +40,6 @@
                  "* %?\n%U\n%a\n" :prepend t)
                 ("pf" "Further research note (project-specific)" entry (file+headline (lambda () (concat pkb-project-notes-dir (projectile-project-name) "/" pkb-project-note-file)) "Further research and TODOs")
                  "* %?\n%U\n%a\n" :prepend t)
-
 ;;;; email captures
                 ("e" "Email backlog (email.org)" entry (file+headline org-email-file "Backlog")
                  "* TODO %a\n%T" :prepend t :empty-lines 1 :immediate-finish t)

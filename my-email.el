@@ -20,7 +20,7 @@
                               "Alexey Bochkarev\n"
                               "https://www.bochkarev.io\n"
                               "matrix: @bochkarev:matrix.org\n"
-                              "telegram: @abochka\n"))
+                              "telegram: t.me/abochka\n"))
     ;; set up maildir folders
     (mu4e-sent-folder . "/personal/Sent")
     (mu4e-drafts-folder . "/personal/Drafts")
@@ -50,7 +50,7 @@
                                "Alexey Bochkarev\n"
                                "https://www.bochkarev.io\n"
                                "matrix: @bochkarev:matrix.org\n"
-                               "telegram: @abochka\n"))
+                               "telegram: t.me/abochka\n"))
     ;; set up maildir folders
     (mu4e-sent-folder . "/CU/Sent")
     (mu4e-drafts-folder . "/CU/Drafts")
@@ -109,7 +109,7 @@
                                "Alexey Bochkarev\n"
                                "https://www.bochkarev.io\n"
                                "matrix: @bochkarev:matrix.org\n"
-                               "telegram: @abochka\n"))
+                               "telegram: t.me/abochka\n"))
     ;; set up maildir folders
     (mu4e-sent-folder . "/legacy/Sent")
     (mu4e-drafts-folder . "/legacy/Drafts")
