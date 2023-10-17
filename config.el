@@ -209,7 +209,7 @@
         :desc "README.org" "r" (lambda () (interactive) (find-file (concat (projectile-project-root) "README.org")))
         :desc ".gitignore" "i" (lambda () (interactive) (find-file (concat (projectile-project-root) ".gitignore")))
         :desc ".ctagsignore" "T" (lambda () (interactive) (find-file (concat (projectile-project-root) ".ctagsignore")))
-        :desc "Makefile" "m" (lambda () (interactive) (find-file (concat (projectile-project-root) "Makefile")))
+        :desc "Makefile" "m" (lambda () (interactive) (find-file (pmagic--find-default-makefile)))
         :desc "setup.el" "s" (lambda () (interactive) (find-file (concat (projectile-project-root) "setup.el"))))))
 
 (map! (:prefix-map  ("H-t" . "hyper-toggle")
@@ -222,3 +222,7 @@
               :config
               (ox-extras-activate '(ignore-headlines)))
 
+(use-package! org-ref
+    :after org)
+
+(atomic-chrome-start-server)

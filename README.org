@@ -3,7 +3,9 @@
 Finally, a Doom-based config (migrating from Spacemacs), with the aim of having
 "less framework in my framework".
 
-Selected highlights:
+Highlights:
 - robust and efficient email with mu4e
 - navigation with etags
-- projects magic: separate org nodes per project
+- projects magic: separate org nodes per project, default makefile, default-file-to-view, etc.
+- org-ref
+- open file in default app (from Dired)

@@ -1,0 +1,4 @@
+# key: nimpl
+# name: raise-not-implemented
+# --
+raise NotImplementedError

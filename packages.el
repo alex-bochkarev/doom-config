@@ -51,3 +51,8 @@
 ;; (unpin! evil-collection)
 (package! evil-collection
    :recipe (:repo "emacs-evil/evil-collection" :branch "master"))
+
+(package! org-ref)
+
+;; for emacs-everywhere in the browser
+(package! atomic-chrome)

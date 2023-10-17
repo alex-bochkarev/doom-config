@@ -43,3 +43,12 @@
   (if (bound-and-true-p pkb-project-notes-dir)
       (concat pkb-project-notes-root "/" pkb-project-notes-dir "/")
     (concat pkb-project-notes-root "/" (projectile-project-name) "/")))
+
+(defun pmagic--find-default-makefile ()
+  "Returns default makefile for the project."
+  (if (bound-and-true-p pmagic--default-makefile)
+      'pmagic--default-makefile
+    (concat (projectile-project-root) "Makefile")))
+
+;; check out the projects directory for switching with ~SPC p p~
+(projectile-discover-projects-in-directory "~/projects/" 1)
