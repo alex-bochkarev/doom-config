@@ -32,11 +32,11 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'desk)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type 'visual)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -95,6 +95,7 @@
 (setq org-quotes-file "~/org/quotes.org")
 (setq org-distractions-file "~/org/fun.org")
 (setq org-current-file "~/org/current.org")
+(setq org-AS-file "~/shares/mobile/AS.org")
 (setq org-someday-file "~/org/someday.org")
 (setq org-blog-file "~/PKB/notes/blog.org")
 (setq org-daily-summary-file "~/org/summaries.org.gpg")
@@ -111,9 +112,13 @@
   (setq org-clock-out-remove-zero-time-clocks t)
   (setq org-use-fast-todo-selection t)
 
+  (setq org-ellipsis "▼")
+
   (setq org-todo-keywords
         (quote ((sequence "TODO(t)" "WIP(w)" "KTL(k@)" "LATER(l)" "|" "DONE(d!)" "CANCELED(q@!)"))))
 
+
+  (load! "my-science.el")
 
   (setq org-tags-exclude-from-inheritance '("keydate"))) ;; that was the logic of keydate tag (needed for simple calendar generation)
 
@@ -215,7 +220,13 @@
 (map! (:prefix-map  ("H-t" . "hyper-toggle")
        :desc "show @mentions" "m" #'ab-highlight-names))
 
-(load! "my-science.el")
+(map! :desc "Expand snippet at point" "H-<tab>" #'yas-expand)
+
+(map! :map org-mode-map :g
+      :desc "Insert org-roam link" "H-]" #'org-roam-node-insert)
+
+(map! :map python-mode-map :g
+      :desc "Show pydoc for the thing at point" "H-d" #'pydoc-at-point)
 
 (use-package! ox-extra
               :after org

@@ -5,6 +5,8 @@
 (add-to-list 'load-path "~/.local/share/emacs/site-lisp/mu4e")
 (require 'mu4e)
 
+(setq +mu4e-compose-org-msg-toggle-next nil)
+
 (defun ab-highlight-names ()
   "Highlights @mentions in the current buffer."
   (interactive)
@@ -161,4 +163,5 @@
                               (lambda (maildir)
                                 (concat "maildir:" (car maildir)))
                               mu4e-maildir-shortcuts) " OR ") ") AND NOT maildir:/.+\/lists/")
-         "All inboxes" ?i)))
+         "All inboxes" ?i)
+        ("((maildir:/\/.+/Sent/) OR (from:Alexey Bochkarev)) AND NOT flag:trashed" "All sent" ?s)))

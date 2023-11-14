@@ -37,6 +37,9 @@
 ;; key folders / directories (with a trailing slash)
 (setq pkb-project-notes-root "~/PKB/notes/proj-notes")
 
+(defvar pkb-project-notes-dir nil
+  "PKB private project notes directory (directory-local variable).")
+
 (defun ab/get-project-notes-dir ()
   "Returns project notes directory if it is defined as a dir-local,
      or uses the project name from projectile otherwise."
@@ -47,7 +50,7 @@
 (defun pmagic--find-default-makefile ()
   "Returns default makefile for the project."
   (if (bound-and-true-p pmagic--default-makefile)
-      'pmagic--default-makefile
+      pmagic--default-makefile
     (concat (projectile-project-root) "Makefile")))
 
 ;; check out the projects directory for switching with ~SPC p p~

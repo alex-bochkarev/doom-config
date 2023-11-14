@@ -1,0 +1,8 @@
+# key: pic
+# name: beamer-new-picture
+# --
+#+begin_export latex
+\begin{center}
+\includegraphics[width=0.85\linewidth]{$0}
+\end{center}
+#+end_export

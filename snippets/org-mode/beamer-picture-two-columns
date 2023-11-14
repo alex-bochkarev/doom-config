@@ -1,0 +1,22 @@
+# -*- mode: snippet -*-
+# name: beamer-picture-two-columns
+# key: pic2col
+# --
+
+**** Columns :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:BEAMER_opt: [T]
+:END:
+***** Picture :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.7
+:END:
+#+begin_export latex
+\includegraphics[width=\linewidth]{$0.pdf}
+#+end_export
+
+***** Caption :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.3
+:END:

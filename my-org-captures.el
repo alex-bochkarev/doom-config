@@ -71,7 +71,7 @@
                  "* %?\n Link: %a\n Captured: %U\n")
                 ("R" "Daily result" entry (file+olp org-current-file "Daily inbox" "Results")
                  "* %? \n%a\n%U\n" :prepend t)
-                ("a" "A question TBD w/Anita" entry (file+headline org-current-file "TBD w/Anita")
+                ("a" "A question TBD w/Anita" entry (file org-AS-file)
                  "* %?\n Captured: %U\n\n")
                 ("k" "Things to do with kids" entry (file+olp org-current-file "Kids" "Activity")
                  "* %? \n%a\n%U\n" :prepend t)))))

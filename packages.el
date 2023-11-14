@@ -56,3 +56,10 @@
 
 ;; for emacs-everywhere in the browser
 (package! atomic-chrome)
+
+;; Appparently, https://github.com/alphapapa/org-ql/issues/364
+(package! org :pin "806abc5a2bbc")
+
+;; Additional python magic
+(package! pydoc)
+(package! python-docstring)

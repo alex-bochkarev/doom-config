@@ -5,6 +5,16 @@
 
 (setq reftex-default-bibliography "~/PKB/sources/references.bib")
 
+(setq org-ref-pdf-directory '("~/PKB/sources/zotero_lib"))
+(setq bibtex-completion-library-path org-ref-pdf-directory)
+
+(setq bibtex-completion-pdf-open-function
+          (lambda (fpath)
+            (call-process "open" nil 0 nil fpath)))
+
+(setq bibtex-completion-bibliography '("~/PKB/sources/references.bib"))
+(setq bibtex-completion-notes-path "~/PKB/notes/refs/")
+
 ;; latex-specific
 ;;
 ;; bury the compilation buffer if everything is OK
@@ -52,6 +62,11 @@
       )
     )
   )
+
+(setq org-latex-pdf-process '("latexmk -interaction=nonstopmode -shell-escape -pdf -outdir=%o %f"))
+
+;; (add-to-list 'org-beamer-environments-extra
+;; '("onlyenv" "O" "\\begin{onlyenv}%a" "\\end{onlyenv}"))
 
 (make-variable-buffer-local 'compilation-start-time)
 

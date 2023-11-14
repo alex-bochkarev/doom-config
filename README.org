@@ -3,9 +3,11 @@
 Finally, a Doom-based config (migrating from Spacemacs), with the aim of having
 "less framework in my framework".
 
-Highlights:
+*Highlights:*
 - robust and efficient email with mu4e
-- navigation with etags
+- navigation with ctags/etags
 - projects magic: separate org nodes per project, default makefile, default-file-to-view, etc.
-- org-ref
+- org-ref and a little bit of latex magic
 - open file in default app (from Dired)
+- a few snippets (latex, beamer, python)
+- custom doom color theme ([[./themes/desk-theme.el][desk]])
