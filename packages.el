@@ -63,3 +63,6 @@
 ;; Additional python magic
 (package! pydoc)
 (package! python-docstring)
+
+;; Hyperbolic magic
+(package! hyperbole)

@@ -3,6 +3,14 @@
 (setq! citar-bibliography '("~/PKB/sources/references.bib"))
 (setq! citar-notes-paths '("~/PKB/notes/refs/"))
 
+(setq citar-file-open-functions '(("html" . citar-file-open-external)
+                                  ("pdf" . (lambda (file)
+                                             (async-shell-command (format-message
+                                                                   "~/.local/bin/sioyek %s" (shell-quote-argument
+                                                                                             file))
+                                                                  "*sioyek-run*")))
+                                  (t . find-file)))
+
 (setq reftex-default-bibliography "~/PKB/sources/references.bib")
 
 (setq org-ref-pdf-directory '("~/PKB/sources/zotero_lib"))
@@ -92,3 +100,9 @@
         (insert (concat (make-string repeats ?`) (make-string repeats ?')))))))
 
 (global-set-key (kbd "H-'") 'ab/latex-quote-selection)
+
+;; custom Hyperbole links
+(after! hyperbole
+  (defil doi-link-id "DOI:[[:space:]]*" "[^A-Za-z0-9/.-]+"
+         "[0-9./-A-Za-z]+" #'doi-utils-open t t
+         "Opens links like DOI:NN.NNNN/NNNN-NNNN/xxxNN and such."))

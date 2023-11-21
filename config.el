@@ -169,11 +169,6 @@
 ;; general keybindings
 
 
-(map! "H-h" 'evil-window-left)
-(map! "H-l" 'evil-window-right)
-(map! "H-j" 'evil-window-down)
-(map! "H-k" 'evil-window-up)
-
 (map! "C-e" 'end-of-visible-line) ;; this is convenient in latex (insert mode)!
 
 (load! "my-projects-magic.el")
@@ -226,7 +221,7 @@
       :desc "Insert org-roam link" "H-]" #'org-roam-node-insert)
 
 (map! :map python-mode-map :g
-      :desc "Show pydoc for the thing at point" "H-d" #'pydoc-at-point)
+      :desc "Show pydoc for the thing at point" "H-h" #'pydoc-at-point)
 
 (use-package! ox-extra
               :after org
@@ -237,3 +232,5 @@
     :after org)
 
 (atomic-chrome-start-server)
+
+(use-package! hyperbole)
