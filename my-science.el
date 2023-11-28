@@ -39,7 +39,7 @@
 (add-hook 'compilation-start-hook 'compilation-started)
 (add-hook 'compilation-finish-functions 'hide-compile-buffer-if-successful)
 
-(defcustom auto-hide-compile-buffer-delay 0
+(defcustom auto-hide-compile-buffer-delay 1
   "Time in seconds before auto hiding compile buffer."
   :group 'compilation
   :type 'number
@@ -47,7 +47,7 @@
 
 (defun hide-compile-buffer-if-successful (buffer string)
   (setq compilation-total-time (time-subtract nil compilation-start-time))
-  (setq time-str (concat " (Time: " (format-time-string "%s.%3N" compilation-total-time) "s)"))
+  (setq time-str (concat " (Time: " (format-time-string "%s.%1N" compilation-total-time) "s)"))
 
   (if
       (with-current-buffer buffer
@@ -60,7 +60,7 @@
              (eq my-compilation-exit-code 0)) nil t))
 
       ;;If Errors then
-      (message (concat "Compiled with Errors" warnings-str time-str))
+      (message (concat "Compiled with Errors (" (number-to-string errors) "), exitcode " (number-to-string my-compilation-exit-code) warnings-str time-str))
 
     ;;If Compiled Successfully or with Warnings then
     (progn
@@ -72,6 +72,15 @@
   )
 
 (setq org-latex-pdf-process '("latexmk -interaction=nonstopmode -shell-escape -pdf -outdir=%o %f"))
+
+;; Synctex-specific:
+(with-eval-after-load 'tex
+  ;; Set Sioyek as the default PDF viewer.
+  (add-to-list 'TeX-view-program-selection
+               '(output-pdf "Sioyek"))
+  ;; Always ask for master tex-file
+  (setq-default TeX-master nil))
+
 
 ;; (add-to-list 'org-beamer-environments-extra
 ;; '("onlyenv" "O" "\\begin{onlyenv}%a" "\\end{onlyenv}"))
