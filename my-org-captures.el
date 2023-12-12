@@ -16,6 +16,8 @@
         (quote (
 
 ;;;; Repo-specific templates
+                ("c" "Calendar Termin" entry (file+headline org-caldav-inbox "Captures inbox")
+                 "* %?\n:PROPERTIES:\n:LOCATION:\n:END:\n%U\n\n" :prepend t)
                 ("r" "=== Repo-specific templates === ")
                 ("rt" "New TODO (repo-specific)" entry (file+headline (lambda () (concat (projectile-project-root)  "TODOs.org")) "Current project TODOs")
                  "* TODO %?\n%U\n%a\n" :prepend t)
@@ -30,15 +32,15 @@
 
 ;;;; (PKB) Project-specific templates
                 ("p" "=== Project-specific templates (PKB/notes) === ")
-                ("pt" "New TODO (project-specific)" entry (file+headline (lambda () (concat pkb-project-notes-dir (projectile-project-name) "/" pkb-project-note-file)) "Current project TODOs")
+                ("pt" "New TODO (project-specific)" entry (file+headline (lambda () (concat (ab/get-project-notes-dir) "/" pkb-project-note-file)) "Current project TODOs")
                  "* TODO %?\n%U\n%a\n" :prepend t)
-                ("pl" "Project Log entry" entry(file+headline (lambda () (concat  pkb-project-notes-dir (projectile-project-name) "/" pkb-project-log-file)) "Running results")
+                ("pl" "Project Log entry" entry(file+headline (lambda () (concat  (ab/get-project-notes-dir) "/" pkb-project-log-file)) "Running results")
                  "* %U: %? \n%a\n" :prepend t)
-                ("pN" "Notation note (project-specific)" item (file+headline (lambda () (concat  pkb-project-notes-dir (projectile-project-name) "/" pkb-project-notation-file)) "Table of symbols (notation)")
+                ("pN" "Notation note (project-specific)" item (file+headline (lambda () (concat  (ab/get-project-notes-dir) "/" pkb-project-notation-file)) "Table of symbols (notation)")
                  "- %?\n")
-                ("pn" "General note / assumptions / etc (project-specific)" entry (file+headline (lambda () (concat pkb-project-notes-dir (projectile-project-name) "/" pkb-project-note-file)) "Notes")
+                ("pn" "General note / assumptions / etc (project-specific)" entry (file+headline (lambda () (concat (ab/get-project-notes-dir) "/" pkb-project-note-file)) "Notes")
                  "* %?\n%U\n%a\n" :prepend t)
-                ("pf" "Further research note (project-specific)" entry (file+headline (lambda () (concat pkb-project-notes-dir (projectile-project-name) "/" pkb-project-note-file)) "Further research and TODOs")
+                ("pf" "Further research note (project-specific)" entry (file+headline (lambda () (concat (ab/get-project-notes-dir) "/" pkb-project-note-file)) "Further research and TODOs")
                  "* %?\n%U\n%a\n" :prepend t)
 ;;;; email captures
                 ("e" "Email backlog (email.org)" entry (file+headline org-email-file "Backlog")

@@ -110,6 +110,9 @@
 
 (global-set-key (kbd "H-'") 'ab/latex-quote-selection)
 
+(map! :map LaTeX-mode-map :i
+      :desc "Insert citation" "H-]" #'citar-insert-citation)
+
 ;; custom Hyperbole links
 (after! hyperbole
   (defil doi-link-id "DOI:[[:space:]]*" "[^A-Za-z0-9/.-]+"

@@ -7,7 +7,9 @@
    '("8d3ef5ff6273f2a552152c7febc40eabca26bae05bd12bc85062e2dc224cde9a" "467dc6fdebcf92f4d3e2a2016145ba15841987c71fbe675dcfe34ac47ffb9195" default))
  '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(safe-local-variable-values
-   '((ab/default-file-to-view . "./export/2023-11-09_Bochkarev_Qopt.pdf")
+   '((pkb-project-notes-dir . "emacsconf-23")
+     (ab/default-file-to-view . "./paper.pdf")
+     (ab/default-file-to-view . "./export/2023-11-09_Bochkarev_Qopt.pdf")
      (pmagic--default-makefile . "~/projects/qopt-overview/comps/Makefile")
      (pkb-project-notes-dir . "qopt-overview")
      (ab/default-file-to-view . "./Bochkarev_ML.pdf")

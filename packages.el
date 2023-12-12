@@ -66,3 +66,10 @@
 
 ;; Hyperbolic magic
 (package! hyperbole)
+
+(package! org-present)
+
+(package! org-plus-contrib
+	  :recipe (:host github :repo "emacs-straight/org"))
+
+(package! org-caldav)

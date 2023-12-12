@@ -119,6 +119,7 @@
 
 
   (load! "my-science.el")
+  (load! "calendars.el")
 
   (setq org-tags-exclude-from-inheritance '("keydate"))) ;; that was the logic of keydate tag (needed for simple calendar generation)
 
@@ -176,6 +177,7 @@
 (map! (:prefix-map  ("H-o" . "hyper-open")
        :desc "general orgfile" "g" (lambda () (interactive) (find-file org-current-file))
        :desc "reading list" "r" (lambda () (interactive) (find-file org-readme-file))
+       :desc "online calendar" "c" (lambda () (interactive) (find-file org-caldav-inbox))
        :desc "distractions" "D" (lambda () (interactive) (find-file org-distractions-file))
        :desc "mobile inbox" "m" (lambda () (interactive) (find-file org-mobile-file))
        :desc "website notes" "w" (lambda () (interactive) (find-file "~/PKB/notes/website.org"))
@@ -234,3 +236,20 @@
 (atomic-chrome-start-server)
 
 (use-package! hyperbole)
+
+(use-package! org-present)
+
+(eval-after-load "org-present"
+  '(progn
+     (add-hook 'org-present-mode-hook
+               (lambda ()
+                 (org-present-big)
+                 (org-display-inline-images)
+                 (org-present-hide-cursor)
+                 (org-present-read-only)))
+     (add-hook 'org-present-mode-quit-hook
+               (lambda ()
+                 (org-present-small)
+                 (org-remove-inline-images)
+                 (org-present-show-cursor)
+                 (org-present-read-write)))))
