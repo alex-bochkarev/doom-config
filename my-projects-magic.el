@@ -53,5 +53,10 @@
       pmagic--default-makefile
     (concat (projectile-project-root) "Makefile")))
 
+(defun pmagic--get-project-file ()
+  "Returns project PKB notes file."
+  (concat
+   (ab/get-project-notes-dir)
+   pkb-project-note-file))
 ;; check out the projects directory for switching with ~SPC p p~
 (projectile-discover-projects-in-directory "~/projects/" 1)

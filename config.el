@@ -117,6 +117,7 @@
   (setq org-todo-keywords
         (quote ((sequence "TODO(t)" "WIP(w)" "KTL(k@)" "LATER(l)" "|" "DONE(d!)" "CANCELED(q@!)"))))
 
+  (setq org-clock-mode-line-total 'today)
 
   (load! "my-science.el")
   (load! "calendars.el")
@@ -253,3 +254,8 @@
                  (org-remove-inline-images)
                  (org-present-show-cursor)
                  (org-present-read-write)))))
+
+;; This is a workaround that addresses search across folded org
+;; https://github.com/doomemacs/doomemacs/issues/6478
+(after! evil
+  (evil-select-search-module 'evil-search-module 'isearch))

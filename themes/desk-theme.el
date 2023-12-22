@@ -133,12 +133,12 @@ determine the exact padding."
    ;;;; org-mode
    (org-document-info-keyword :background yellow-alt :inherit 'bold
                               :box `(:line-width -1 :color ,blue :style 'released-button))
-   (org-document-title :inherit 'underline)
+   (org-document-title :inherit 'bold :foreground blue)
    ((org-meta-line &override) :foreground blue)
    (org-level-1 :background light-blue :inherit 'underline)
    (org-level-3 :foreground magenta :inherit 'italic)
    (org-list-dt :foreground blue)
-   (org-code :foreground strings :box `(:line-width -1 :color ,base5 :style 'button))
+   (org-code :background base8 :foreground bg-accent :inherit 'bold :box `(:line-width -1 :color ,base5 :style 'button))
    (org-ref-cite-face :foreground bg-accent)
 
    ;;;; vertico
@@ -215,13 +215,14 @@ determine the exact padding."
    ((org-date &override)  :foreground fg :background yellow-alt
     :box `(:line-width -1 :color ,base5  :style 'released-button))
    ;; Make drawers and special keywords (like scheduled) to be very bleak
-   ((org-special-keyword &override)  :foreground grey)
-   ((org-drawer          &override)  :foreground grey :background base0)
+   ((org-special-keyword &override)  :foreground base4)
+   ((org-drawer          &override)  :foreground base4 :background base0)
    ;; Make ellipsis as bleak as possible and reset underline/boxing
    (org-ellipsis :underline nil :box nil :foreground fg :background bg)
    ;; Make blocks have a slightly different background
    ((org-block &override) :background yellow-alt)
-   ((org-block-begin-line &override) :foreground fg :slant 'italic)
+   ((org-block-begin-line &override) :foreground fg :slant 'italic :background yellow)
+   ((org-block-end-line &override) :foreground fg :slant 'italic :background yellow)
    ((org-quote &override) :background yellow-alt)
    ((org-table &override) :foreground fg)
    ;; Make "unimportant" things like distant deadlines and things scheduled for
