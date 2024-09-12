@@ -19,9 +19,13 @@
         "~/PKB/notes/proj-notes/QuantumAktiv"
         "~/PKB/notes/proj-notes/align-BDD"
         "~/PKB/notes/proj-notes/qopt-overview"
+        "~/PKB/notes/proj-notes/QuantumAI"
+        "~/PKB/notes/proj-notes/DSPI"
         "~/PKB/notes/conferences.org"
         "~/PKB/notes/projects.org"
+        "~/PKB/notes/20231205101723-bo_vqe_milena_roers_bsc.org"
         "~/projects/qmath-course"
+        "~/projects/coal-opt"
         "~/.dotfiles"))
 
 (add-hook 'org-agenda-mode-hook

@@ -1,0 +1,9 @@
+# key: glosym
+# name: glossaries-new-symbol-entry
+# --
+\newglossaryentry{sym:$1}{% a label
+name=$2,
+symbol=$3,
+description={$0},
+sort=sym$4, type=symbolslist
+}

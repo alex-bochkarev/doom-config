@@ -73,3 +73,5 @@
 	  :recipe (:host github :repo "emacs-straight/org"))
 
 (package! org-caldav)
+
+(package! reverse-im)

@@ -168,10 +168,13 @@
 
 
 (load! "my-email.el")
+(load! "my-julia.el")
+
 ;; general keybindings
 
-
 (map! "C-e" 'end-of-visible-line) ;; this is convenient in latex (insert mode)!
+(map! "H-h" 'evil-avy-goto-char-timer) ;; hopping around efficiently
+(map! "H-f" 'writeroom-mode) ;; focus on the matter
 
 (load! "my-projects-magic.el")
 
@@ -193,8 +196,7 @@
         :desc "doom" "e" '(lambda () (interactive) (find-file "~/.config/doom/config.el"))
         :desc ".zshrc" "z" '(lambda () (interactive) (find-file "~/.zshrc"))
         :desc "zsh_aliases" "a" '(lambda () (interactive) (find-file "~/.config/zsh_aliases"))
-        :desc "sway" "w" '(lambda () (interactive) (find-file "~/.config/sway/config"))
-        :desc ".mailrc" "m" '(lambda () (interactive) (find-file "~/.mailrc"))
+        :desc "sway" "w" '(lambda () (interactive) (find-file "~/.config/sway/config")) :desc ".mailrc" "m" '(lambda () (interactive) (find-file "~/.mailrc"))
         :desc "statusbar (waybar)" "s" '(lambda () (interactive) (find-file "~/.config/waybar/"))
         :desc "config folder" "c" '(lambda () (interactive) (find-file "~/.config/"))
         :desc "dotfiles folder" "d" '(lambda () (interactive) (find-file "~/.dotfiles/")))
@@ -259,3 +261,18 @@
 ;; https://github.com/doomemacs/doomemacs/issues/6478
 (after! evil
   (evil-select-search-module 'evil-search-module 'isearch))
+
+(defun ab--indent-line-to-previous-nonempty-line ()
+  "(Left-)Indents the line at point to the previous nonempty
+  line using `indent-relative'."
+  (interactive)
+  (save-excursion
+    (evil-next-line-1-first-non-blank)
+    (kill-line 0)
+    (indent-relative)))
+
+(map! "H-l" #'ab--indent-line-to-previous-nonempty-line)
+
+(use-package! reverse-im
+  :custom
+  (reverse-im-input-methods '("russian-computer")))

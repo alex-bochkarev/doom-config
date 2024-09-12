@@ -82,7 +82,7 @@ determine the exact padding."
    (numbers        red)
    (region         bg-accent)
    (error          red)
-   (warning        bg-accent)
+   (warning        (doom-darken bg-accent 0.2))
    (success        green)
    (vc-modified    orange)
    (vc-added       green)
@@ -115,8 +115,8 @@ determine the exact padding."
    (font-lock-keyword-face       :foreground blue :inherit 'bold)
    (font-lock-constant-face       :foreground cyan :inherit 'bold)
    (font-lock-type-face          :inherit 'bold)
-   ((line-number &override) :foreground (doom-lighten base4 0.15))
-   ((line-number-current-line &override) :foreground base8 :inherit bold)
+   (line-number :foreground (doom-lighten base4 0.15))
+   (line-number-current-line :foreground base8 :inherit bold)
    (mode-line
     :background modeline-bg :foreground modeline-fg
     :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg)))
@@ -139,7 +139,7 @@ determine the exact padding."
    (org-level-3 :foreground magenta :inherit 'italic)
    (org-list-dt :foreground blue)
    (org-code :background base8 :foreground bg-accent :inherit 'bold :box `(:line-width -1 :color ,base5 :style 'button))
-   (org-ref-cite-face :foreground bg-accent)
+   (org-ref-cite-face :foreground (doom-darken bg-accent 0.2))
 
    ;;;; vertico
    (vertico-current :background bg-accent)

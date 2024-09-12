@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: QuanTUK figure template
+# key: qfig
+# --
+\begin{figure}[ht]
+  \begin{margincap}
+    \centering
+    \includegraphics[width=\textwidth]{$0}
+    % \begin{tikzpicture} or \includegraphics here,
+    % or \minipage-s as necessary
+    \caption{This is my caption.\label{fig:$1}}
+  \end{margincap}
+\end{figure}
