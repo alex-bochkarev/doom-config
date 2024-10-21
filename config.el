@@ -276,3 +276,5 @@
 (use-package! reverse-im
   :custom
   (reverse-im-input-methods '("russian-computer")))
+
+(map! "H-z" #'recompile)

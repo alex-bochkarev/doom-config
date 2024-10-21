@@ -1,0 +1,16 @@
+#+LATEX_HEADER: \usepackage{titling}
+#+LATEX_HEADER: \setlength{\droptitle}{-3cm}
+#+LATEX_HEADER: \preauthor{\begin{center}\small \vskip -1em}
+#+LATEX_HEADER: \postauthor{\end{center}}
+#+LATEX_HEADER: \predate{\begin{center} \small \vskip -0.5em}
+#+LATEX_HEADER: \postdate{\end{center} \normalsize}
+
+#+LATEX_HEADER: \usepackage{fancyhdr}
+#+LATEX_HEADER: \pagestyle{fancy}
+#+LATEX_HEADER: \fancyhead[LO,LE]{A.B.}
+
+#+OPTIONS: toc:nil date:t
+#+LATEX_CLASS: koma-article
+
+#+LATEX: \thispagestyle{empty}  % to remove page numbers on the first page
+#+LATEX: \vskip -1em

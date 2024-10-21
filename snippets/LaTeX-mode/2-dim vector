@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: 2-dim vector
+# key: vec2
+# --
+\begin{bmatrix} $0 \end{bmatrix}

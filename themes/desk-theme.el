@@ -116,7 +116,7 @@ determine the exact padding."
    (font-lock-constant-face       :foreground cyan :inherit 'bold)
    (font-lock-type-face          :inherit 'bold)
    (line-number :foreground (doom-lighten base4 0.15))
-   (line-number-current-line :foreground base8 :inherit bold)
+   (line-number-current-line :foreground base8 :background bg-accent :inherit bold)
    (mode-line
     :background modeline-bg :foreground modeline-fg
     :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg)))

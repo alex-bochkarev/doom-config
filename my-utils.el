@@ -18,3 +18,12 @@ NOTE: Spacemacs' `spacemacs/open-in-external-app' was more robust wrt different 
       :leader
       :desc "Open in the default app"
       "f o" #'ab--dired-xdg-open-file)
+
+(with-eval-after-load "ox-latex"
+  (add-to-list 'org-latex-classes
+               '("koma-article" "\\documentclass{scrartcl}"
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))

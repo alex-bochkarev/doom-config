@@ -1,0 +1,10 @@
+#+title: Memo Title
+#+author: A. Bochkarev
+#+include: setup.org
+
+#+LATEX_HEADER: \fancyhead[CO,CE]{\textbf{[qopt-overview]}}
+#+LATEX_HEADER: \fancyhead[RO,RE]{MEMO: Dataset}
+
+#+begin_abstract
+
+#+end_abstract

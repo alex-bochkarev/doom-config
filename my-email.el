@@ -165,3 +165,6 @@
                               mu4e-maildir-shortcuts) " OR ") ") AND NOT maildir:/.+\/lists/")
          "All inboxes" ?i)
         ("((maildir:/\/.+/Sent/) OR (from:Alexey Bochkarev)) AND NOT flag:trashed" "All sent" ?s)))
+
+(setq mail-user-agent #'mu4e-user-agent
+      message-mail-user-agent t)
