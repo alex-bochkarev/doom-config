@@ -3,6 +3,9 @@
 (setq! citar-bibliography '("~/PKB/sources/references.bib"))
 (setq! citar-notes-paths '("~/PKB/notes/refs/"))
 
+;; for CSL and plain-text exports
+(setq org-cite-global-bibliography '("~/PKB/sources/references.bib"))
+
 (setq citar-file-open-functions '(("html" . citar-file-open-external)
                                   ("pdf" . (lambda (file)
                                              (async-shell-command (format-message
@@ -13,7 +16,7 @@
 
 (setq reftex-default-bibliography "~/PKB/sources/references.bib")
 
-(setq org-ref-pdf-directory '("~/PKB/sources/zotero_lib"))
+(setq org-ref-pdf-directory '("~/PKB/sources/zotero_lib/"))
 (setq bibtex-completion-library-path org-ref-pdf-directory)
 
 (setq bibtex-completion-pdf-open-function
@@ -113,8 +116,26 @@
 (map! :map LaTeX-mode-map :i
       :desc "Insert citation" "H-]" #'citar-insert-citation)
 
+;; for plain-text exports with CSL biblio exporter
+(setq org-cite-csl-styles-dir
+ (expand-file-name "~/PKB/Zotero/styles/"))
+
 ;; custom Hyperbole links
-(after! hyperbole
-  (defil doi-link-id "DOI:[[:space:]]*" "[^A-Za-z0-9/.-]+"
-         "[0-9./-A-Za-z]+" #'doi-utils-open t t
-         "Opens links like DOI:NN.NNNN/NNNN-NNNN/xxxNN and such."))
+;; (after! hyperbole
+;;   (defil doi-link-id "DOI:[[:space:]]*" "[^A-Za-z0-9/.-]+"
+;;          "[0-9./-A-Za-z]+" #'doi-utils-open t t
+;;          "Opens links like DOI:NN.NNNN/NNNN-NNNN/xxxNN and such."))
+
+;; jupyter code blocks
+;; see https://github.com/emacs-jupyter/jupyter
+;; (after! ob-jupyter
+;;   (org-babel-do-load-languages 'org-babel-load-languages
+;;                                '((emacs-lisp . t)
+;;                                  (julia . t)
+;;                                  (python . t)
+;;                                  (jupyter . t)))
+;;   (setq
+;;         org-babel-default-header-args:jupyter-python '((:async . "yes")
+;;         (:session . "py") (:kernel . "python3")))
+;;   (zmq-load)
+;;   )

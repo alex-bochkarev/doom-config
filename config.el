@@ -38,6 +38,8 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'visual)
 
+(straight-use-package 'org)
+
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
@@ -175,6 +177,13 @@
 (map! "C-e" 'end-of-visible-line) ;; this is convenient in latex (insert mode)!
 (map! "H-h" 'evil-avy-goto-char-timer) ;; hopping around efficiently
 (map! "H-f" 'writeroom-mode) ;; focus on the matter
+(map! "H-<return>" 'recompile)
+
+;; WM-specific (i3wm has its own bindings!)
+(map! "s-h" 'evil-window-left)
+(map! "s-j" 'evil-window-down)
+(map! "s-k" 'evil-window-up)
+(map! "s-l" 'evil-window-right)
 
 (load! "my-projects-magic.el")
 
@@ -238,7 +247,7 @@
 
 (atomic-chrome-start-server)
 
-(use-package! hyperbole)
+;(use-package! hyperbole)
 
 (use-package! org-present)
 
