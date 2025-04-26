@@ -77,3 +77,5 @@
 (package! org-caldav)
 
 (package! reverse-im)
+(package! key-chord)
+

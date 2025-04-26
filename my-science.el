@@ -116,6 +116,9 @@
 (map! :map LaTeX-mode-map :i
       :desc "Insert citation" "H-]" #'citar-insert-citation)
 
+(map! :map org-mode-map
+      :desc "Insert citation (ref)" "H-[" #'org-cite-insert)
+
 ;; for plain-text exports with CSL biblio exporter
 (setq org-cite-csl-styles-dir
  (expand-file-name "~/PKB/Zotero/styles/"))
