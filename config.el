@@ -220,7 +220,7 @@
         :desc "TODOs" "t" (lambda () (interactive) (find-file (concat (projectile-project-root) "TODOs.org")))
         :desc "Changelog" "c" (lambda () (interactive) (find-file (concat (projectile-project-root) "CHANGELOG.org")))
         :desc "README.md" "R" (lambda () (interactive) (find-file (concat (projectile-project-root) "README.md")))
-        :desc "README.org" "r" (lambda () (interactive) (find-file (concat (projectile-project-root) "README.org")))
+        :desc "Project README" "r" (lambda () (interactive) (find-file (pmagic--get-readme-file)))
         :desc ".gitignore" "i" (lambda () (interactive) (find-file (concat (projectile-project-root) ".gitignore")))
         :desc ".ctagsignore" "T" (lambda () (interactive) (find-file (concat (projectile-project-root) ".ctagsignore")))
         :desc "Makefile" "m" (lambda () (interactive) (find-file (pmagic--find-default-makefile)))

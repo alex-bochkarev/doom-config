@@ -27,3 +27,10 @@ NOTE: Spacemacs' `spacemacs/open-in-external-app' was more robust wrt different 
                  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                  ("\\paragraph{%s}" . "\\paragraph*{%s}")
                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+
+
+(require 'key-chord)
+(key-chord-mode t)
+(setq key-chord-two-keys-delay 0.05)
+(key-chord-define-global "jk" 'evil-normal-state)
+(key-chord-define-global "kj" 'evil-normal-state)

@@ -21,10 +21,13 @@
         "~/PKB/notes/proj-notes/qopt-overview"
         "~/PKB/notes/proj-notes/QuantumAI"
         "~/PKB/notes/proj-notes/DSPI"
+        "~/PKB/notes/proj-notes/snn-tsp"
+        "~/PKB/notes/proj-notes/stdp"
         "~/PKB/notes/conferences.org"
         "~/PKB/notes/projects.org"
         "~/PKB/notes/20231205101723-bo_vqe_milena_roers_bsc.org"
         "~/projects/qmath-course"
+        "~/projects/stdp"
         "~/projects/coal-opt"
         "~/.dotfiles"))
 
@@ -57,10 +60,47 @@
       pmagic--default-makefile
     (concat (projectile-project-root) "Makefile")))
 
+;; clocking to private notes file
+;;
 (defun pmagic--get-project-file ()
   "Returns project PKB notes file."
   (concat
    (ab/get-project-notes-dir)
    pkb-project-note-file))
+
+(defun pmagic--attempt-clock-in (id file)
+  "Attempts to clock into a header specified by ID in FILE."
+    (if-let (marker (org-id-find-id-in-file id file t))
+        (save-current-buffer
+          (save-excursion
+            (set-buffer (marker-buffer marker))
+            (goto-char (marker-position marker))
+            (org-clock-in)))
+      (warn "Clock not started (Could not find ID '%s' in file '%s')" id file)))
+
+(defun pmagic--clock-in-PKB-node ()
+  "Clocks into a private node with the same heading under `Clocked time'."
+  (interactive)
+  (let ((current-heading (org-entry-get nil "ITEM")))
+    (with-current-buffer
+        (find-file-noselect (pmagic--get-project-file))
+      (org-goto-location)
+      (org-clock-in))))
+
 ;; check out the projects directory for switching with ~SPC p p~
 (projectile-discover-projects-in-directory "~/projects/" 1)
+
+
+(defvar pmagic--default-readme nil
+  "README file for the current project (if defined).")
+
+(defun pmagic--get-readme-file ()
+  "Returns a path to the README file in the repo.
+
+   This is given by `pmagic--default-readme' variable if defined,
+   or `README.org' in the project root otherwise."
+  (interactive)
+  (concat (projectile-project-root)
+          (if (bound-and-true-p pmagic--default-readme)
+              pmagic--default-readme
+            "README.org")))
