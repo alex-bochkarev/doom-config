@@ -4,7 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("41ac486edd2f4611229a91b768337c3ab44ec96f2cb8efe59d841210ab945567" "8d3ef5ff6273f2a552152c7febc40eabca26bae05bd12bc85062e2dc224cde9a" "467dc6fdebcf92f4d3e2a2016145ba15841987c71fbe675dcfe34ac47ffb9195" default))
+   '("86e83d9b2edb23bd2cdfdfccb78b6bc06cd5e79568783e902f46f28f74b9b565" "48537f2ddd82a804e30aacf3775e62ec7ea7db3d9ac159bebb4b3f4135368573" "da2184e9c26930718660272a52bf73f8f4c1dbc9bbd7904170b464737cfa6741" "41ac486edd2f4611229a91b768337c3ab44ec96f2cb8efe59d841210ab945567" "8d3ef5ff6273f2a552152c7febc40eabca26bae05bd12bc85062e2dc224cde9a" "467dc6fdebcf92f4d3e2a2016145ba15841987c71fbe675dcfe34ac47ffb9195" default))
  '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(org-fold-core-style 'overlays)
  '(safe-local-variable-values

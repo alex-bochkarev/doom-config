@@ -120,7 +120,7 @@
   (setq org-clock-mode-line-total 'today)
 
   (load! "my-science.el")
-  (load! "calendars.el")
+  ;;(load! "calendars.el")
 
   (setq org-tags-exclude-from-inheritance '("keydate"))) ;; that was the logic of keydate tag (needed for simple calendar generation)
 
@@ -236,7 +236,7 @@
 (use-package! org-ref
     :after org)
 
-(atomic-chrome-start-server)
+;(atomic-chrome-start-server)
 
 (use-package! hyperbole)
 
@@ -278,3 +278,24 @@
   (reverse-im-input-methods '("russian-computer")))
 
 (map! "H-z" #'recompile)
+
+(setq ab--current-frame-alpha 85)
+(defun ab--inc-opacity ()
+  "Increases the opacity by 5"
+  (interactive)
+  (setq ab--current-frame-alpha
+        (min (+ ab--current-frame-alpha 5) 100))
+  (set-frame-parameter nil 'alpha-background ab--current-frame-alpha))
+
+(defun ab--dec-opacity ()
+  "Decreases the opacity by 5"
+  (interactive)
+  (setq ab--current-frame-alpha
+        (max (- ab--current-frame-alpha 5) 10))
+  (set-frame-parameter nil 'alpha-background ab--current-frame-alpha))
+
+(map! "H-=" #'ab--inc-opacity)
+(map! "H--" #'ab--dec-opacity)
+
+;; Personal info directories
+(push "~/.info-files" Info-directory-list)

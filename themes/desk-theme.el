@@ -194,6 +194,10 @@ determine the exact padding."
    (mu4e-header-highlight-face :foreground dark-blue :background bg-accent :inherit 'bold)
    (mu4e-unread-face :foreground blue :inherit 'underline)
 
+   ;;;; web mode (HTML)
+   (web-mode-html-tag-face :inherit 'bold :foreground magenta)
+   (web-mode-html-attr-name-face :foreground blue)
+
    ;;;; dired
    (diredfl-flag-mark-line :inherit 'underline :bold 'bold)
    (diredfl-flag-mark :background bg-accent)
