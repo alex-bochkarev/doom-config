@@ -14,14 +14,13 @@
   (font-lock-fontify-buffer))
 
 (set-email-account!
- "Private"
+ "personal"
  '( ( user-mail-address	    . "a@bochkarev.io"  )
     ( user-full-name	    . "Alexey Bochkarev" )
     ( mu4e-compose-signature .
                              (concat
-                              "Alexey Bochkarev\n"
+                              "Dr. Alexey Bochkarev\n"
                               "https://www.bochkarev.io\n"
-                              "matrix: @bochkarev:matrix.org\n"
                               "telegram: t.me/abochka\n"))
     ;; set up maildir folders
     (mu4e-sent-folder . "/personal/Sent")
@@ -51,7 +50,6 @@
                               (concat
                                "Alexey Bochkarev\n"
                                "https://www.bochkarev.io\n"
-                               "matrix: @bochkarev:matrix.org\n"
                                "telegram: t.me/abochka\n"))
     ;; set up maildir folders
     (mu4e-sent-folder . "/CU/Sent")
@@ -73,17 +71,16 @@
     ))
 
 (set-email-account!
- "Work"
+ "RPTU"
  '( ( user-mail-address	     . "a.bochkarev@rptu.de" )
     ( user-full-name	     . "Alexey Bochkarev" )
     ( mu4e-compose-signature  .
                               (concat
                                "Alexey Bochkarev\n"
-                               "Postdoc @ RPTU Kaiserslautern-Landau :: AG Optimierung,\n"
-                               "tel: +49 (0)631 205 3925\n"
+                               "RPTU Kaiserslautern-Landau :: AG Opt,\n"
                                "https://www.bochkarev.io\n"
-                               "matrix: @bochkarev:matrix.org\n"
-                               "telegram: @abochka (https://t.me/abochka)"))
+                               "tel: +49 (0)631 205 5327\n"
+                               ))
     ;; set up maildir folders
     (mu4e-sent-folder . "/RPTU/Sent")
     (mu4e-drafts-folder . "/RPTU/Drafts")
@@ -110,7 +107,6 @@
                               (concat
                                "Alexey Bochkarev\n"
                                "https://www.bochkarev.io\n"
-                               "matrix: @bochkarev:matrix.org\n"
                                "telegram: t.me/abochka\n"))
     ;; set up maildir folders
     (mu4e-sent-folder . "/legacy/Sent")
@@ -137,11 +133,13 @@
 (setq mu4e-maildir "~/.mail"
       mu4e-get-mail-command "mbsync -a"
       mu4e-update-interval nil
-      mu4e-compose-signature-auto-include t
+      mu4e-compose-signature-auto-include nil  ; include it manually with C-c C-w
       ;; mu4e-compose-format-flowed t
       mu4e-attachment-dir "~/Downloads/email"
       mu4e-view-show-images t
-      mu4e-view-show-addresses t)
+      mu4e-view-show-addresses t
+      message-citation-line-format "On %Y-%m-%d %a, %H:%M (%Z), %f wrote:\n"
+      message-citation-line-function 'message-insert-formatted-citation-line)
 
 ;; Mail directory shortcuts
 (setq mu4e-maildir-shortcuts
@@ -164,7 +162,20 @@
                                 (concat "maildir:" (car maildir)))
                               mu4e-maildir-shortcuts) " OR ") ") AND NOT maildir:/.+\/lists/")
          "All inboxes" ?i)
+        ("maildir:/\/.+\/Archive/" "All archives" ?a)
         ("((maildir:/\/.+/Sent/) OR (from:Alexey Bochkarev)) AND NOT flag:trashed" "All sent" ?s)))
 
 (setq mail-user-agent #'mu4e-user-agent
       message-mail-user-agent t)
+
+(defun insert-mu4e-sig-here ()
+  "Insert the mu4e signature here, assuming it is a string."
+  (interactive)
+  (save-excursion
+    (let ((my-sign (eval mu4e-compose-signature)))
+      (when (stringp my-sign)
+        (insert (concat "\n" my-sign "\n"))))))
+
+
+(map! :map message-mode-map
+      :desc "Insert current signature here." "C-c C-w" #'insert-mu4e-sig-here)

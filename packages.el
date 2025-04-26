@@ -40,7 +40,6 @@
 ;; Use `:pin' to specify a particular commit to install.
 ;(package! builtin-package :pin "1a2b3c4d5e")
 
-
 ;; Doom's packages are pinned to a specific commit and updated from release to
 ;; release. The `unpin!' macro allows you to unpin single packages...
 ;(unpin! pinned-package)
@@ -52,25 +51,28 @@
 (package! evil-collection
    :recipe (:repo "emacs-evil/evil-collection" :branch "master"))
 
+;; Appparently, https://github.com/alphapapa/org-ql/issues/364
+;; (package! org :pin "806abc5a2bbc")
+
 (package! org-ref)
 
 ;; for emacs-everywhere in the browser
 (package! atomic-chrome)
 
-;; Appparently, https://github.com/alphapapa/org-ql/issues/364
-(package! org :pin "806abc5a2bbc")
+;; https://github.com/doomemacs/doomemacs/issues/7354
+(package! jupyter :pin "16cbda79167b4e2f2c6b61b218658f0f660d97f9")
 
 ;; Additional python magic
 (package! pydoc)
 (package! python-docstring)
 
 ;; Hyperbolic magic
-(package! hyperbole)
+; (package! hyperbole)
 
 (package! org-present)
 
 (package! org-plus-contrib
-	  :recipe (:host github :repo "emacs-straight/org"))
+	  :recipe (:host github :repo "emacs-straight/org-mode"))
 
 (package! org-caldav)
 

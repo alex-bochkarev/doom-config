@@ -94,7 +94,7 @@ determine the exact padding."
     (when desk-padded-modeline
       (if (integerp desk-padded-modeline) desk-padded-modeline 4)))
 
-   (modeline-fg     nil)
+   (modeline-fg     'unspecified)
    (modeline-fg-alt base4)
 
    (modeline-bg
@@ -132,13 +132,13 @@ determine the exact padding."
 
    ;;;; org-mode
    (org-document-info-keyword :background yellow-alt :inherit 'bold
-                              :box `(:line-width -1 :color ,blue :style 'released-button))
+                              :box `(:line-width -1 :color ,blue :style released-button))
    (org-document-title :inherit 'bold :foreground blue)
    ((org-meta-line &override) :foreground blue)
    (org-level-1 :background light-blue :inherit 'underline)
    (org-level-3 :foreground magenta :inherit 'italic)
    (org-list-dt :foreground blue)
-   (org-code :background base8 :foreground bg-accent :inherit 'bold :box `(:line-width -1 :color ,base5 :style 'button))
+   (org-code :background base8 :foreground bg-accent :inherit 'bold :box `(:line-width -1 :color ,base5))
    (org-ref-cite-face :foreground (doom-darken bg-accent 0.2))
 
    ;;;; vertico
@@ -215,9 +215,9 @@ determine the exact padding."
    ((org-todo &override) :foreground red :background yellow-alt)
    ;; Make tags and dates to have pretty box around them
    ((org-tag &override)   :foreground fg :background yellow-alt
-    :box `(:line-width -1 :color ,base5 :style 'released-button))
+    :box `(:line-width -1 :color ,base5 :style released-button))
    ((org-date &override)  :foreground fg :background yellow-alt
-    :box `(:line-width -1 :color ,base5  :style 'released-button))
+    :box `(:line-width -1 :color ,base5  :style released-button))
    ;; Make drawers and special keywords (like scheduled) to be very bleak
    ((org-special-keyword &override)  :foreground base4)
    ((org-drawer          &override)  :foreground base4 :background base0)
