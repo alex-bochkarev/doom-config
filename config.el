@@ -3,6 +3,11 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
+;; Define host-specific commands
+(defmacro on-host (host-regexp &rest body)
+  "Evaluate BODY only when `system-name' matches HOST-REGEXP."
+  `(when (string-match-p ,host-regexp (system-name))
+     ,@body))
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
@@ -121,8 +126,10 @@
 
   (setq org-clock-mode-line-total 'today)
 
+  (on-host "workbox"
+           (load! "calendars.el"))
+
   (load! "my-science.el")
-  (load! "calendars.el")
 
   (setq org-tags-exclude-from-inheritance '("keydate"))) ;; that was the logic of keydate tag (needed for simple calendar generation)
 
@@ -246,10 +253,6 @@
 (use-package! org-ref
     :after org)
 
-(atomic-chrome-start-server)
-
-;(use-package! hyperbole)
-
 (use-package! org-present)
 
 (eval-after-load "org-present"
@@ -288,3 +291,24 @@
   (reverse-im-input-methods '("russian-computer")))
 
 (map! "H-z" #'recompile)
+
+(setq ab--current-frame-alpha 85)
+(defun ab--inc-opacity ()
+  "Increases the opacity by 5"
+  (interactive)
+  (setq ab--current-frame-alpha
+        (min (+ ab--current-frame-alpha 5) 100))
+  (set-frame-parameter nil 'alpha-background ab--current-frame-alpha))
+
+(defun ab--dec-opacity ()
+  "Decreases the opacity by 5"
+  (interactive)
+  (setq ab--current-frame-alpha
+        (max (- ab--current-frame-alpha 5) 10))
+  (set-frame-parameter nil 'alpha-background ab--current-frame-alpha))
+
+(map! "H-=" #'ab--inc-opacity)
+(map! "H--" #'ab--dec-opacity)
+
+;; Personal info directories
+(push "~/.info-files" Info-directory-list)

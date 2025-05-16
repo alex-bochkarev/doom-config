@@ -2,7 +2,12 @@
 ;;; My setup, mu / mu4e / mbsync
 
 ;; email setup
-(add-to-list 'load-path "~/.local/share/emacs/site-lisp/mu4e")
+(on-host "workbox"
+         (add-to-list 'load-path "~/.local/share/emacs/site-lisp/mu4e"))
+
+(on-host "samsara"
+         (add-to-list 'load-path "/usr/share/emacs/site-lisp/elpa/mu4e-1.12.8"))
+
 (require 'mu4e)
 
 (setq +mu4e-compose-org-msg-toggle-next nil)
