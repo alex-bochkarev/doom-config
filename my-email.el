@@ -7,12 +7,6 @@
 
 (setq +mu4e-compose-org-msg-toggle-next nil)
 
-(defun ab-highlight-names ()
-  "Highlights @mentions in the current buffer."
-  (interactive)
-  (font-lock-add-keywords nil '(("@[A-Za-z]+[:]*" . font-lock-warning-face)))
-  (font-lock-fontify-buffer))
-
 (set-email-account!
  "personal"
  '( ( user-mail-address	    . "a@bochkarev.io"  )

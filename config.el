@@ -227,7 +227,8 @@
         :desc "setup.el" "s" (lambda () (interactive) (find-file (concat (projectile-project-root) "setup.el"))))))
 
 (map! (:prefix-map  ("H-t" . "hyper-toggle")
-       :desc "show @mentions" "m" #'ab-highlight-names))
+       :desc "@mentions" "m" (lambda () (interactive) (ab--toggle-highlight "@mentions"))
+       :desc "(parentheses)" "p" (lambda () (interactive) (ab--toggle-highlight "parens"))))
 
 (map! :desc "Expand snippet at point" "H-<tab>" #'yas-expand)
 
