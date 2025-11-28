@@ -40,7 +40,8 @@ NOTE: Spacemacs' `spacemacs/open-in-external-app' was more robust wrt different 
 
  (defvar ab--highlight-patterns
   '(("@mentions" . ("\\(@[A-Za-z][A-Za-z0-9]*\\)" . font-lock-comment-face))
-    ("parens" . ("\\(([^)]*)\\)" . hi-red-b)))
+    ("parens" . ("\\(([^)]*)\\)" . hi-red-b))
+    ("drama---dash" . ("\\(-\\{2,3\\}\\)" . hi-red-b)))
   "Alist of (NAME . (REGEX . FACE)) for custom highlights.")
 
 (defvar-local ab--highlight-states nil

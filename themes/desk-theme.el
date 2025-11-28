@@ -222,7 +222,7 @@ determine the exact padding."
    ((org-special-keyword &override)  :foreground base4)
    ((org-drawer          &override)  :foreground base4 :background base0)
    ;; Make ellipsis as bleak as possible and reset underline/boxing
-   (org-ellipsis :underline nil :box nil :foreground fg :background bg)
+   (org-ellipsis :underline nil :box nil :foreground fg :background nil)
    ;; Make blocks have a slightly different background
    ((org-block &override) :background yellow-alt)
    ((org-block-begin-line &override) :foreground fg :slant 'italic :background yellow)

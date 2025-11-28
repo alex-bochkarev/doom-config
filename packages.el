@@ -71,8 +71,8 @@
 
 (package! org-present)
 
-(package! org-plus-contrib
-	  :recipe (:host github :repo "emacs-straight/org-mode"))
+;; (package! org-plus-contrib)
+	  ;; :recipe (:host github :repo "emacs-straight/org-mode"))
 
 (package! org-caldav)
 

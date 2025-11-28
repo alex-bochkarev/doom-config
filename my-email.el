@@ -19,8 +19,7 @@
     ( mu4e-compose-signature .
                              (concat
                               "Dr. Alexey Bochkarev\n"
-                              "https://www.bochkarev.io\n"
-                              "telegram: t.me/abochka\n"))
+                              "https://www.bochkarev.io\n"))
     ;; set up maildir folders
     (mu4e-sent-folder . "/personal/Sent")
     (mu4e-drafts-folder . "/personal/Drafts")
@@ -78,7 +77,7 @@
                                "Alexey Bochkarev\n"
                                "RPTU Kaiserslautern-Landau :: AG Opt,\n"
                                "https://www.bochkarev.io\n"
-                               "tel: +49 (0)631 205 5327\n"
+                               "tel: +49 (0)631 205 5324\n"
                                ))
     ;; set up maildir folders
     (mu4e-sent-folder . "/RPTU/Sent")

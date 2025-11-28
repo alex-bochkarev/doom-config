@@ -43,8 +43,6 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'visual)
 
-(straight-use-package 'org)
-
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
@@ -119,7 +117,7 @@
   (setq org-clock-out-remove-zero-time-clocks t)
   (setq org-use-fast-todo-selection t)
 
-  (setq org-ellipsis "▼")
+  (setq org-ellipsis "↫")
 
   (setq org-todo-keywords
         (quote ((sequence "TODO(t)" "WIP(w)" "KTL(k@)" "LATER(l)" "|" "DONE(d!)" "CANCELED(q@!)"))))
@@ -235,6 +233,7 @@
 
 (map! (:prefix-map  ("H-t" . "hyper-toggle")
        :desc "@mentions" "m" (lambda () (interactive) (ab--toggle-highlight "@mentions"))
+       :desc "drama---dash" "d" (lambda () (interactive) (ab--toggle-highlight "drama---dash"))
        :desc "(parentheses)" "p" (lambda () (interactive) (ab--toggle-highlight "parens"))))
 
 (map! :desc "Expand snippet at point" "H-<tab>" #'yas-expand)
