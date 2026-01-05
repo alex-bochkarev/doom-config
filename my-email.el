@@ -5,8 +5,8 @@
 (on-host "workbox"
          (add-to-list 'load-path "~/.local/share/emacs/site-lisp/mu4e"))
 
-(on-host "samsara"
-         (add-to-list 'load-path "/usr/share/emacs/site-lisp/elpa/mu4e-1.12.8"))
+(on-host "rupaloka"
+         (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e"))
 
 (require 'mu4e)
 
