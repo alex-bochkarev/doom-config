@@ -310,4 +310,5 @@
 (map! "H--" #'ab--dec-opacity)
 
 ;; Personal info directories
-(push "~/.info-files" Info-directory-list)
+(on-host "rupaloka"
+ (push "~/.info-files" Info-directory-list))
