@@ -79,3 +79,5 @@
 (package! reverse-im)
 (package! key-chord)
 
+(package! python-black)
+(package! backup-walker)

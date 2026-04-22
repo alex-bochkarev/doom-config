@@ -196,6 +196,9 @@
 
   (setq org-tags-exclude-from-inheritance '("keydate"))) ;; that was the logic of keydate tag (needed for simple calendar generation)
 
+(load! "imaginary-friends.el")
+
+
 (defun ab/get-date-if-not-nil(datearg)
   "Returns date if not nil and nil otherwise"
   (interactive)
@@ -260,6 +263,7 @@
 (load! "my-projects-magic.el")
 
 (map! (:prefix-map  ("H-o" . "hyper-open")
+       :desc "backups folder" "b" (lambda () (interactive) (find-file ab--backupdir))
        :desc "general orgfile" "g" (lambda () (interactive) (find-file org-current-file))
        :desc "reading list" "r" (lambda () (interactive) (find-file org-readme-file))
        :desc "online calendar" "c" (lambda () (interactive) (find-file org-caldav-inbox))
@@ -274,7 +278,7 @@
        :desc "projects pipeline" "P" (lambda () (interactive) (find-file org-research-file))
        (:prefix-map ("d" . "dotfiles")
         :desc  "spacemacs" "E" '(lambda () (interactive) (find-file "~/.spacemacs.d/init.el"))
-        :desc "doom" "e" '(lambda () (interactive) (find-file "~/.config/doom/config.el"))
+        :desc "doom" "e" '(lambda () (interactive) (doom/open-private-config))
         :desc ".zshrc" "z" '(lambda () (interactive) (find-file "~/.zshrc"))
         :desc "zsh_aliases" "a" '(lambda () (interactive) (find-file "~/.config/zsh_aliases"))
         :desc "sway" "w" '(lambda () (interactive) (find-file "~/.config/sway/config")) :desc ".mailrc" "m" '(lambda () (interactive) (find-file "~/.mailrc"))
@@ -379,3 +383,27 @@
 ;; Personal info directories
 (on-host "rupaloka"
  (push "~/.info-files" Info-directory-list))
+
+(load! "my-python.el")
+
+;; Numbered backups section
+(setq version-control t)           ; Use numbered backup files
+(setq make-backup-files t)         ; Actually create backups
+(setq kept-old-versions 0)         ; Don't bother with oldest versions
+(setq kept-new-versions 10)        ; Keep the ten most recent saves for each file
+(setq delete-old-versions t)       ; Silently delete excess versions
+(setq vc-make-backup-files t)      ; Make backups even for version-controlled directories
+
+;; keep all the backups together in a private folder
+(setq ab--backupdir "~/.config/doom/backups/")
+(setq backup-directory-alist `(("." . ,ab--backupdir)))
+(setq backup-by-copying t)         ; Avoid symlink issues
+
+(defun ab--force-backup ()
+  (interactive)
+  (let ((buffer-backed-up nil))
+    (backup-buffer)
+    (message "[INFO] Backup created at %s" ab--backupdir)))
+
+(map! "H-s" 'ab--force-backup)
+;; end of backups section

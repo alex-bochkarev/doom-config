@@ -11,7 +11,7 @@
                     (insert "end")
                     (julia-indent-line))))
 
-(evil-define-key '(normal insert) julia-mode-map (kbd "H-<return>") 'ab|julia-close-this)
+(evil-define-key '(normal insert) julia-mode-map (kbd "H-<return>") 'ab--julia-close-this)
 
 (map! :map julia-mode-map
       :desc "close-this" :gnv "H-]" #'ab--julia-close-this)
