@@ -403,7 +403,11 @@
   (interactive)
   (let ((buffer-backed-up nil))
     (backup-buffer)
-    (message "[INFO] Backup created at %s" ab--backupdir)))
+    (message "Backup saved to %s"
+             (let ((current-file (buffer-file-name)))
+               (when current-file
+                 (car (find-backup-file-name current-file)))))))
 
 (map! "H-s" 'ab--force-backup)
 ;; end of backups section
+
