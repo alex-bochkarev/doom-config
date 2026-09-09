@@ -51,68 +51,61 @@
 (setq doom-unicode-font (font-spec :family "FiraCode"))
 
 ;; set up custom splash screens
-(on-host "rupaloka" (progn
-                      (defun machine-specific-splash ()
-                        (let* ((banner '(" ____                              _       _         "
-                                         "|  _ \\ _   _ _ __   __ _          | | ___ | | ____ _"
-                                         "| |_) | | | | '_ \\ / _` |  _____  | |/ _ \\| |/ / _` |"
-                                         "|  _ <| |_| | |_) | (_| | |_____| | | (_) |   < (_| |"
-                                         "|_| \\_\\\\__,_| .__/ \\__,_|         |_|\\___/|_|\\_\\__,_|"
-                                         "            |_|                                      "
-                                         "                          ... where things take form."
-                                         "                                                     "
-                                         " Personal machine configuration.                     "
-                                         "                                                     "
-                                         " Alexey Bochkarev"
-                                         " <a@bochkarev.io>                                    "
-                                         "                         ⁂                          "
-                                         ))
-                               (longest-line (apply #'max (mapcar #'length banner))))
-                          (put-text-property
-                           (point)
-                           (dolist (line banner (point))
-                             (insert (+doom-dashboard--center
-                                      +doom-dashboard--width
-                                      (concat line (make-string (max 0 (- longest-line (length line))) 32)))
-                                     "\n"))
-                           'face 'doom-dashboard-banner)))
+(on-host "rupaloka"
+         (defun machine-specific-splash ()
+           (let* ((banner '(" ____                              _       _         "
+                            "|  _ \\ _   _ _ __   __ _          | | ___ | | ____ _"
+                            "| |_) | | | | '_ \\ / _` |  _____  | |/ _ \\| |/ / _` |"
+                            "|  _ <| |_| | |_) | (_| | |_____| | | (_) |   < (_| |"
+                            "|_| \\_\\\\__,_| .__/ \\__,_|         |_|\\___/|_|\\_\\__,_|"
+                            "            |_|                                      "
+                            "                          ... where things take form."
+                            "                                                     "
+                            " Personal machine configuration.                     "
+                            "                                                     "
+                            " Alexey Bochkarev"
+                            " <a@bochkarev.io>                                    "
+                            "                         ⁂                          "
+                            ))
+                  (longest-line (apply #'max (mapcar #'length banner))))
+             (propertize
+              (mapconcat (lambda (line)
+                           (concat line (make-string (max 0 (- longest-line (length line))) ?\s)))
+                         banner
+                         "\n")
+              'face '+dashboard-banner)))
 
-                      (setq +doom-dashboard-ascii-banner-fn #'rupaloka-splash)))
+         (setq +dashboard-ascii-banner-fn #'machine-specific-splash))
 
+(on-host "workbox"
+         (defun machine-specific-splash ()
+           (let* ((banner '("░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░"
+                            "░░█▀▄░░░░░░░░░░░░░░░░░ Rheinland-Pfälzische   ░░░░░░"
+                            "░░█▀▄░░░░░░▀█▀░█░█░░░░ Technische Universität ░░░░░░"
+                            "░░▀░▀░░░░░░░█░░█░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░"
+                            "░░░░░░░█▀█░░▀░░▀▀▀░░░░ Kaiserslautern         ░░░░░░"
+                            "░░░░░░░█▀▀░░░░░░░░░░░░ Landau                 ░░░░░░"
+                            "░░░░░░░▀░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░"
+                            "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░"
+                            "                                                    "
+                            " Workbox config.                                    "
+                            "                                                    "
+                            " Alexey Bochkarev                                   "
+                            " FB Mathematik / 31-455 / tel. 53-24                "
+                            "                                                    "
+                            " <a.bochkarev@rptu.de>                              "
+                            " <a@bochkarev.io>                                   "
+                            "                         ⁂                         "
+                            ))
+                  (longest-line (apply #'max (mapcar #'length banner))))
+             (propertize
+              (mapconcat (lambda (line)
+                           (concat line (make-string (max 0 (- longest-line (length line))) ?\s)))
+                         banner
+                         "\n")
+              'face '+dashboard-banner)))
 
-(on-host "workbox" (progn
-                      (defun machine-specific-splash ()
-                        (let* ((banner '("░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░"
-                                         "░░█▀▄░░░░░░░░░░░░░░░░░ Rheinland-Pfälzische   ░░░░░░"
-                                         "░░█▀▄░░░░░░▀█▀░█░█░░░░ Technische Universität ░░░░░░"
-                                         "░░▀░▀░░░░░░░█░░█░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░"
-                                         "░░░░░░░█▀█░░▀░░▀▀▀░░░░ Kaiserslautern         ░░░░░░"
-                                         "░░░░░░░█▀▀░░░░░░░░░░░░ Landau                 ░░░░░░"
-                                         "░░░░░░░▀░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░"
-                                         "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░"
-                                         "                                                    "
-                                         " Workbox config.                                    "
-                                         "                                                    "
-                                         " Alexey Bochkarev                                   "
-                                         " FB Mathematik / 31-455 / tel. 53-24                "
-                                         "                                                    "
-                                         " <a.bochkarev@rptu.de>                              "
-                                         " <a@bochkarev.io>                                   "
-                                         "                         ⁂                         "
-                                         ))
-                               (longest-line (apply #'max (mapcar #'length banner))))
-                          (put-text-property
-                           (point)
-                           (dolist (line banner (point))
-                             (insert (+doom-dashboard--center
-                                      +doom-dashboard--width
-                                      (concat line (make-string (max 0 (- longest-line (length line))) 32)))
-                                     "\n"))
-                           'face 'doom-dashboard-banner)))
-
-                      ))
-
-(setq +doom-dashboard-ascii-banner-fn #'machine-specific-splash)
+         (setq +dashboard-ascii-banner-fn #'machine-specific-splash))
 
 ;; setting up org-roam
 (setq org-roam-directory "~/PKB/notes")
