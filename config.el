@@ -274,7 +274,8 @@
         :desc "doom" "e" '(lambda () (interactive) (doom/open-private-config))
         :desc ".zshrc" "z" '(lambda () (interactive) (find-file "~/.zshrc"))
         :desc "zsh_aliases" "a" '(lambda () (interactive) (find-file "~/.config/zsh_aliases"))
-        :desc "sway" "w" '(lambda () (interactive) (find-file "~/.config/sway/config")) :desc ".mailrc" "m" '(lambda () (interactive) (find-file "~/.mailrc"))
+        :desc "sway" "w" '(lambda () (interactive) (find-file "~/.config/i3/config"))
+	:desc ".mailrc" "m" '(lambda () (interactive) (find-file "~/.mailrc"))
         :desc "statusbar (waybar)" "s" '(lambda () (interactive) (find-file "~/.config/waybar/"))
         :desc "config folder" "c" '(lambda () (interactive) (find-file "~/.config/"))
         :desc "dotfiles folder" "d" '(lambda () (interactive) (find-file "~/.dotfiles/")))
@@ -403,4 +404,3 @@
 
 (map! "H-s" 'ab--force-backup)
 ;; end of backups section
-
