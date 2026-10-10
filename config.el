@@ -144,6 +144,8 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+(add-load-path! "lisp")
+
 ;; spacemacs-ey coveniences
 (map! :desc "dired here" :leader "fj" #'dired-jump)
 
@@ -289,6 +291,7 @@
         :desc "PKB Org file" "o" (lambda () (interactive) (find-file (concat (ab/get-project-notes-dir) pkb-project-note-file)))
         :desc "TODOs" "t" (lambda () (interactive) (find-file (concat (projectile-project-root) "TODOs.org")))
         :desc "Changelog" "c" (lambda () (interactive) (find-file (concat (projectile-project-root) "CHANGELOG.org")))
+        :desc "CLAUDE.md" "C" (lambda () (interactive) (find-file (concat (projectile-project-root) "CLAUDE.md")))
         :desc "README.md" "R" (lambda () (interactive) (find-file (concat (projectile-project-root) "README.md")))
         :desc "Project README" "r" (lambda () (interactive) (find-file (pmagic--get-readme-file)))
         :desc ".gitignore" "i" (lambda () (interactive) (find-file (concat (projectile-project-root) ".gitignore")))
@@ -404,3 +407,45 @@
 
 (map! "H-s" 'ab--force-backup)
 ;; end of backups section
+
+(use-package! org-unicode-print
+  :commands (oup-export-to-pdf out-load-data))
+
+;; misc helpers
+(defun my/strike-region (beg end)
+  "Overlay U+0336 on every non-newline character in region."
+  (interactive "r")
+  (let ((s (buffer-substring-no-properties beg end)))
+    (delete-region beg end)
+    (goto-char beg)
+    (insert (mapconcat (lambda (c)
+                         (if (eq c ?\n) "\n" (string c #x336)))))))
+
+;; org latex dimming
+(defun my/org--fragment-bounds (ctx)
+  (cons (org-element-property :begin ctx)
+        (- (org-element-property :end ctx)
+           (org-element-property :post-blank ctx))))
+
+(defun my/org-latex-delim-matcher (limit)
+  "Font-lock matcher for \\( and \\) that really delimit a fragment."
+  (let (found)
+    (while (and (not found)
+                (re-search-forward "\\\\[()]" limit t))
+      (let ((mb (match-beginning 0)) (me (match-end 0)))
+        (save-match-data
+          (save-excursion
+            (goto-char mb)
+            (let ((ctx (org-element-context)))
+              (when (eq (org-element-type ctx) 'latex-fragment)
+                (pcase-let ((`(,beg . ,end) (my/org--fragment-bounds ctx)))
+                  (setq found (or (= mb beg) (= me end))))))))))
+    found))
+
+(defun my/org-dim-latex-delims-h ()
+  (font-lock-add-keywords
+   nil '((my/org-latex-delim-matcher (0 'shadow prepend)))
+   'append))
+
+(after! org
+    (add-hook 'org-mode-hook #'my/org-dim-latex-delims-h))
